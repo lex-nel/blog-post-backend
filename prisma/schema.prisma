@@ -13,16 +13,16 @@ enum PostCategory {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  email     String   @unique
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  email     String    @unique
   password  String
   firstName String?
   midName   String?
   lastName  String?
   posts     Post[]
-  // comments  Comment[]
+  comments  Comment[]
 }
 
 model Post {
@@ -38,20 +38,20 @@ model Post {
   content      String
   author       User         @relation(fields: [authorId], references: [id])
   authorId     Int
-  // comments     Comment[]
+  comments     Comment[]
   // tags         TagsOnPosts[]
 }
 
-// model Comment {
-//   id        Int      @id @default(autoincrement())
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-//   content   String
-//   author    User?    @relation(fields: [authorId], references: [id])
-//   authorId  Int?
-//   post      Post?    @relation(fields: [postId], references: [id])
-//   postId    Int?
-// }
+model Comment {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  content   String
+  author    User?    @relation(fields: [authorId], references: [id])
+  authorId  Int?
+  post      Post?    @relation(fields: [postId], references: [id])
+  postId    Int?
+}
 
 // model Tag {
 //   id        Int           @id @default(autoincrement())
