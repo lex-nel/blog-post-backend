@@ -1,11 +1,4 @@
-import {
-  ArgsType,
-  Field,
-  ID,
-  InputType,
-  Int,
-  ObjectType,
-} from '@nestjs/graphql';
+import { ArgsType, Field, InputType, Int, ObjectType } from '@nestjs/graphql';
 import { Comment } from 'src/modules/comment/comment.model';
 import { Post } from 'src/modules/post/post.model';
 
@@ -56,8 +49,8 @@ export class UsersArgs {
 
 @ArgsType()
 export class UserArgs {
-  @Field(() => ID)
-  id: string;
+  @Field(() => Int)
+  id: number;
 }
 
 @InputType()
@@ -80,8 +73,8 @@ export class CreateUserInput {
 
 @InputType()
 export class UpdateUserInput {
-  @Field(() => ID)
-  id: string;
+  @Field(() => Int)
+  id: number;
 
   @Field({ nullable: true })
   firstName?: string;

@@ -33,7 +33,7 @@ export class UserResolver {
   @Query(() => User, { description: 'Return user' })
   async user(@Args() args: UserArgs) {
     return this.prisma.user.findUnique({
-      where: { id: parseInt(args.id, 10) },
+      where: { id: args.id },
     });
   }
 
@@ -46,7 +46,7 @@ export class UserResolver {
   async updateUser(@Args('user') args: UpdateUserInput) {
     const { id, ...data } = args;
     return this.prisma.user.update({
-      where: { id: parseInt(id, 10) },
+      where: { id },
       data,
     });
   }
