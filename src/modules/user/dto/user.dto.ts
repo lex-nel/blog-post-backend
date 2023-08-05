@@ -24,10 +24,7 @@ export class UserDto {
   lastName?: string;
 
   @ApiProperty({
-    type: 'array',
-    items: {
-      oneOf: [{ $ref: getSchemaPath(PostDto) }],
-    },
+    type: () => [PostDto],
   })
   posts: PostDto[];
 

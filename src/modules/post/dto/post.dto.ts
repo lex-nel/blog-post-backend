@@ -34,10 +34,7 @@ export class PostDto {
   content: string;
 
   @ApiProperty({
-    type: 'array',
-    items: {
-      oneOf: [{ $ref: getSchemaPath(UserDto) }],
-    },
+    type: () => UserDto,
   })
   author: UserDto;
 
