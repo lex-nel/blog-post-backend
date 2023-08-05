@@ -6,9 +6,12 @@ import { UserModule } from './modules/user/user.module';
 import { PostModule } from './modules/post/post.module';
 import { CommentModule } from './modules/comment/comment.module';
 import { TagModule } from './modules/tag/tag.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { DevtoolsModule } from '@nestjs/devtools-integration';
 
 @Module({
   imports: [
+    AuthModule,
     UserModule,
     PostModule,
     CommentModule,
@@ -16,6 +19,9 @@ import { TagModule } from './modules/tag/tag.module';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true,
+    }),
+    DevtoolsModule.register({
+      http: process.env.NODE_ENV !== 'production',
     }),
   ],
   controllers: [],
