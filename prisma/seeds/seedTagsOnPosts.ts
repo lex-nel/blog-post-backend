@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/ru';
 import { PrismaClient, TagsOnPosts } from '@prisma/client';
 import { isEqual, times, uniqWith } from 'lodash';
 

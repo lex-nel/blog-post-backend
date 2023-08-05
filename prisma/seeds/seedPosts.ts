@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/ru';
 import { PostCategory, PrismaClient } from '@prisma/client';
 import { times } from 'lodash';
 

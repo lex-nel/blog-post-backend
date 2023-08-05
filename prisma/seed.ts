@@ -1,12 +1,9 @@
 import { PrismaClient } from '@prisma/client';
-import { faker } from '@faker-js/faker';
 import { seedUsers } from './seeds/seedUsers';
 import { seedPosts } from './seeds/seedPosts';
 import { seedTags } from './seeds/seedTags';
 import { seedComments } from './seeds/seedComents';
 import { seedTagsOnPosts } from './seeds/seedTagsOnPosts';
-
-faker.locale = 'ru';
 
 const prisma = new PrismaClient();
 
