@@ -1,26 +1,38 @@
 # Blog Post
 
-## Description
+## Описание
 
-Backend for test
+Тестовый Backend
 
-## Installation
+## Установка
 
 ```bash
-$ npm install
+$ yarn
 ```
 
-## Running the app
+## Пост установка
+
+Необходима БД, например PostgreSQL. Доступ к БД прописать в файле .env, DATABASE_URL.
+
+```bash
+$ npx prisma migrate # Запуск миграций
+$ npx prisma generate # Генерация моделей
+$ npx prisma db seed # Заполнение БД данными
+
+$ npx prisma studio # Графический интерфейс для БД
+```
+
+## Запуск
 
 ```bash
 # development
-$ npm run start
+$ yarn start
 
 # watch mode
-$ npm run start:dev
+$ yarn start:dev
 
 # production mode
-$ npm run start:prod
+$ yarn start:prod
 ```
 
 ## License
