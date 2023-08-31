@@ -6,7 +6,7 @@ export async function seedUsers(prisma: PrismaClient) {
   const users = times(33, () => {
     const createdAt = faker.date.past();
     const updatedAt = faker.datatype.boolean()
-      ? faker.date.soon(2, createdAt.toISOString())
+      ? faker.date.soon({ days: 2, refDate: createdAt.toISOString() })
       : createdAt;
 
     return {
@@ -14,9 +14,9 @@ export async function seedUsers(prisma: PrismaClient) {
       updatedAt,
       email: faker.internet.email(),
       password: 'password',
-      firstName: faker.name.firstName(),
-      midName: faker.name.middleName(),
-      lastName: faker.name.lastName(),
+      firstName: faker.person.firstName(),
+      midName: faker.person.middleName(),
+      lastName: faker.person.lastName(),
     };
   });
 

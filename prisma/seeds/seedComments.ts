@@ -6,15 +6,15 @@ export async function seedComments(prisma: PrismaClient) {
   const comments = times(439, () => {
     const createdAt = faker.date.past();
     const updatedAt = faker.datatype.boolean()
-      ? faker.date.soon(2, createdAt.toISOString())
+      ? faker.date.soon({ days: 2, refDate: createdAt.toISOString() })
       : createdAt;
 
     return {
       createdAt,
       updatedAt,
       content: faker.lorem.paragraph(),
-      authorId: faker.datatype.number({ min: 1, max: 33 }),
-      postId: faker.datatype.number({ min: 1, max: 157 }),
+      authorId: faker.number.int({ min: 1, max: 33 }),
+      postId: faker.number.int({ min: 1, max: 157 }),
     };
   });
 

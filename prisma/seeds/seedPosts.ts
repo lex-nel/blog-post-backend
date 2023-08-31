@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker/locale/ru';
-import { PostCategory, PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { times } from 'lodash';
 
 export async function seedPosts(prisma: PrismaClient) {
@@ -7,12 +7,12 @@ export async function seedPosts(prisma: PrismaClient) {
     const createdAt = faker.date.past();
     const isUpdated = faker.datatype.boolean();
     const updatedAt = isUpdated
-      ? faker.date.soon(2, createdAt.toISOString())
+      ? faker.date.soon({ days: 2, refDate: createdAt.toISOString() })
       : createdAt;
     const isPublished = isUpdated ? faker.datatype.boolean() : false;
     const publishedAt =
       isUpdated && isPublished
-        ? faker.date.soon(2, updatedAt?.toISOString())
+        ? faker.date.soon({ days: 2, refDate: createdAt.toISOString() })
         : null;
 
     return {
@@ -20,15 +20,11 @@ export async function seedPosts(prisma: PrismaClient) {
       updatedAt,
       publishedAt,
       isPublished,
-      postCategory: faker.helpers.arrayElement([
-        PostCategory.BLOG,
-        PostCategory.NEWS,
-      ]),
-      image: faker.image.cats(),
+      image: faker.image.urlLoremFlickr({ category: 'cats' }),
       title: faker.lorem.sentence(),
       longTitle: faker.lorem.sentences(2),
       content: '<p>' + faker.lorem.paragraphs(5, '</p><p>') + '</p>',
-      authorId: faker.datatype.number({ min: 1, max: 33 }),
+      authorId: faker.number.int({ min: 1, max: 33 }),
     };
   });
 

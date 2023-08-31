@@ -5,8 +5,8 @@ import { isEqual, times, uniqWith } from 'lodash';
 export async function seedTagsOnPosts(prisma: PrismaClient) {
   const tagsOnPosts: TagsOnPosts[] = times(333, () => {
     return {
-      postId: faker.datatype.number({ min: 1, max: 157 }),
-      tagId: faker.datatype.number({ min: 1, max: 24 }),
+      postId: faker.number.int({ min: 1, max: 157 }),
+      tagId: faker.number.int({ min: 1, max: 24 }),
     };
   });
 

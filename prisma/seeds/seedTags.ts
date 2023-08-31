@@ -6,7 +6,7 @@ export async function seedTags(prisma: PrismaClient) {
   const tags = times(24, () => {
     const createdAt = faker.date.past();
     const updatedAt = faker.datatype.boolean()
-      ? faker.date.soon(2, createdAt.toISOString())
+      ? faker.date.soon({ days: 2, refDate: createdAt.toISOString() })
       : createdAt;
 
     return {
