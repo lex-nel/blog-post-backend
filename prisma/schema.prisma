@@ -7,50 +7,48 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum PostCategory {
-  NEWS
-  BLOG
-}
-
 model User {
-  id        Int       @id @default(autoincrement())
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  email     String    @unique
-  password  String
-  firstName String?
-  midName   String?
-  lastName  String?
-  posts     Post[]
-  comments  Comment[]
+  id           Int            @id @default(autoincrement())
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  email        String         @unique
+  password     String
+  firstName    String?
+  midName      String?
+  lastName     String?
+  posts        Post[]
+  comments     Comment[]
+  PostLikes    PostLikes[]
+  CommentLikes CommentLikes[]
 }
 
 model Post {
-  id           Int           @id @default(autoincrement())
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-  publishedAt  DateTime?
-  isPublished  Boolean       @default(false)
-  postCategory PostCategory  @default(BLOG)
-  image        String
-  title        String
-  longTitle    String
-  content      String
-  author       User          @relation(fields: [authorId], references: [id])
-  authorId     Int
-  comments     Comment[]
-  tags         TagsOnPosts[]
+  id          Int           @id @default(autoincrement())
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  publishedAt DateTime?
+  isPublished Boolean       @default(false)
+  image       String
+  title       String
+  longTitle   String
+  content     String
+  author      User          @relation(fields: [authorId], references: [id])
+  authorId    Int
+  comments    Comment[]
+  tags        TagsOnPosts[]
+  likes       PostLikes[]
 }
 
 model Comment {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id        Int            @id @default(autoincrement())
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
   content   String
-  author    User?    @relation(fields: [authorId], references: [id])
+  author    User?          @relation(fields: [authorId], references: [id])
   authorId  Int?
-  post      Post?    @relation(fields: [postId], references: [id])
+  post      Post?          @relation(fields: [postId], references: [id])
   postId    Int?
+  likes     CommentLikes[]
 }
 
 model Tag {
@@ -68,4 +66,22 @@ model TagsOnPosts {
   tagId  Int
 
   @@id([postId, tagId])
+}
+
+model PostLikes {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  Int
+  Post      Post?    @relation(fields: [postId], references: [id])
+  postId    Int?
+}
+
+model CommentLikes {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  Int
+  Comment   Comment? @relation(fields: [commentId], references: [id])
+  commentId Int?
 }
