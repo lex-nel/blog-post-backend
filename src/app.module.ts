@@ -8,6 +8,7 @@ import { CommentModule } from './modules/comment/comment.module';
 import { TagModule } from './modules/tag/tag.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { DevtoolsModule } from '@nestjs/devtools-integration';
+import { LikeModule } from './modules/like/like.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { DevtoolsModule } from '@nestjs/devtools-integration';
     PostModule,
     CommentModule,
     TagModule,
+    LikeModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true,
