@@ -1,6 +1,3 @@
--- CreateEnum
-CREATE TYPE "PostCategory" AS ENUM ('NEWS', 'BLOG');
-
 -- CreateTable
 CREATE TABLE "Post" (
     "id" SERIAL NOT NULL,
@@ -8,7 +5,6 @@ CREATE TABLE "Post" (
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "publishedAt" TIMESTAMP(3),
     "isPublished" BOOLEAN NOT NULL DEFAULT false,
-    "postCategory" "PostCategory" NOT NULL DEFAULT 'BLOG',
     "image" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "longTitle" TEXT NOT NULL,
