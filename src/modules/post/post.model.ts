@@ -9,7 +9,6 @@ import {
 import { User } from 'src/modules/user/user.model';
 import { Comment } from 'src/modules/comment/comment.model';
 import { Tag } from 'src/modules/tag/tag.model';
-import { PostCategory } from '@prisma/client';
 
 @ObjectType()
 export class Post {
@@ -27,9 +26,6 @@ export class Post {
 
   @Field(() => Boolean)
   isPublished: boolean;
-
-  @Field(() => String)
-  postCategory: PostCategory;
 
   @Field(() => String)
   image: string;

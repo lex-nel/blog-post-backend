@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Request,
+  UseGuards,
+} from '@nestjs/common';
 import {
   ApiBearerAuth,
   ApiBody,
@@ -22,7 +30,13 @@ export class PostsController {
     type: [PostDto],
   })
   async posts() {
-    return this.prisma.post.findMany();
+    return this.prisma.post.findMany({
+      include: {
+        _count: { select: { comments: true, likes: true } },
+        author: true,
+        tags: true,
+      },
+    });
   }
 
   @Get(':id')
@@ -44,7 +58,12 @@ export class PostsController {
     description: 'The record has been successfully created.',
     type: PostDto,
   })
-  async createPost(@Body() createPostDto: CreatePostDto) {
-    return this.prisma.post.create({ data: createPostDto });
+  async createPost(@Body() createPostDto: CreatePostDto, @Request() req) {
+    return this.prisma.post.create({
+      data: {
+        ...createPostDto,
+        authorId: req.user.userId,
+      },
+    });
   }
 }

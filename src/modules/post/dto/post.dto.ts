@@ -1,6 +1,7 @@
-import { ApiProperty, getSchemaPath } from '@nestjs/swagger';
-import { PostCategory, Tag } from '@prisma/client';
+import { ApiProperty } from '@nestjs/swagger';
+import { Tag } from '@prisma/client';
 import { UserDto } from 'src/modules/user/dto/user.dto';
+import { CountDto } from './count.dto';
 
 export class PostDto {
   @ApiProperty()
@@ -17,9 +18,6 @@ export class PostDto {
 
   @ApiProperty()
   isPublished: boolean;
-
-  @ApiProperty()
-  postCategory: PostCategory;
 
   @ApiProperty()
   image: string;
@@ -45,8 +43,10 @@ export class PostDto {
   comments: Comment[];
 
   @ApiProperty()
-  commentCount: number;
-
-  @ApiProperty()
   tags: Tag[];
+
+  @ApiProperty({
+    type: () => CountDto,
+  })
+  _count: CountDto;
 }

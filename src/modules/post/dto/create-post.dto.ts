@@ -12,9 +12,4 @@ export class CreatePostDto {
 
   @ApiProperty()
   image: string;
-
-  @ApiProperty({
-    type: Number,
-  })
-  authorId: number;
 }
