@@ -1,4 +1,5 @@
-import { ApiProperty, getSchemaPath } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
+import { CommentDto } from 'src/modules/comment/dto/comment.dto';
 import { PostDto } from 'src/modules/post/dto/post.dto';
 
 export class UserDto {
@@ -31,8 +32,10 @@ export class UserDto {
   @ApiProperty()
   postCount: number;
 
-  @ApiProperty()
-  comments: Comment[];
+  @ApiProperty({
+    type: () => [CommentDto],
+  })
+  comments: CommentDto[];
 
   @ApiProperty()
   commentCount: number;
