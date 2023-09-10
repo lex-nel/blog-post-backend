@@ -5,6 +5,5 @@ import { LikesController } from './controllers/likes.controller';
 @Module({
   controllers: [LikesController],
   providers: [PrismaService],
-  exports: [],
 })
 export class LikeModule {}
