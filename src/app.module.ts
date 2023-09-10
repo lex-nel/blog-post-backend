@@ -1,4 +1,6 @@
 import { Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
 import { DevtoolsModule } from '@nestjs/devtools-integration';
 
 import { PrismaService } from './services/prisma.service';
@@ -18,6 +20,10 @@ import { LikeModule } from './modules/likes/likes.module';
     CommentModule,
     TagModule,
     LikeModule,
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: true,
+    }),
     DevtoolsModule.register({
       http: process.env.NODE_ENV !== 'production',
     }),
