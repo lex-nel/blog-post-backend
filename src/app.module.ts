@@ -1,14 +1,16 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
-import { PrismaService } from './services/prisma.service';
-import { UserModule } from './modules/user/user.module';
-import { PostModule } from './modules/post/post.module';
-import { CommentModule } from './modules/comment/comment.module';
-import { TagModule } from './modules/tag/tag.module';
-import { AuthModule } from './modules/auth/auth.module';
 import { DevtoolsModule } from '@nestjs/devtools-integration';
-import { LikeModule } from './modules/like/like.module';
+
+import { PrismaService } from './services/prisma.service';
+
+import { UserModule } from './modules/users/users.module';
+import { PostModule } from './modules/posts/posts.module';
+import { CommentModule } from './modules/comments/comments.module';
+import { TagModule } from './modules/tags/tags.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { LikeModule } from './modules/likes/likes.module';
 
 @Module({
   imports: [
