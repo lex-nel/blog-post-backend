@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { CommentDto } from 'src/modules/comments/dto/comment.dto';
+import { CommentDto } from 'src/modules/posts/modules/comments/dto/comment.dto';
 import { PostDto } from 'src/modules/posts/dto/post.dto';
 
 export class UserDto {

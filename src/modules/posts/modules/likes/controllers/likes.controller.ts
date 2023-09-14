@@ -10,7 +10,7 @@ import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PrismaService } from 'src/services/prisma.service';
 import { PostLikeDto } from '../dto/post-like.dto';
 import { CommentLikeDto } from '../dto/comment-like.dto';
-import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
+import { JwtAuthGuard } from '../../../../auth/guards/jwt-auth.guard';
 
 @ApiTags('Likes')
 @Controller('likes')

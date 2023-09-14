@@ -14,8 +14,8 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { PrismaService } from 'src/services/prisma.service';
-import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
-import { PostDto } from '../../posts/dto/post.dto';
+import { JwtAuthGuard } from '../../../../auth/guards/jwt-auth.guard';
+import { PostDto } from '../../../dto/post.dto';
 import { CreateCommentDto } from '../dto/create-comment.dto';
 import { CommentDto } from '../dto/comment.dto';
 
