@@ -7,7 +7,7 @@
 ## Установка
 
 ```bash
-$ yarn
+yarn
 ```
 
 ## Пост установка
@@ -15,24 +15,24 @@ $ yarn
 Необходима БД, например PostgreSQL. Доступ к БД прописать в файле .env, DATABASE_URL.
 
 ```bash
-$ npx prisma migrate # Запуск миграций
-$ npx prisma generate # Генерация моделей
-$ npx prisma db seed # Заполнение БД данными
+npx prisma migrate # Запуск миграций
+npx prisma generate # Генерация моделей
+npx prisma db seed # Заполнение БД данными
 
-$ npx prisma studio # Графический интерфейс для БД
+npx prisma studio # Графический интерфейс для БД
 ```
 
 ## Запуск
 
 ```bash
 # development
-$ yarn start
+yarn start
 
 # watch mode
-$ yarn start:dev
+yarn start:dev
 
 # production mode
-$ yarn start:prod
+yarn start:prod
 ```
 
 ## License
