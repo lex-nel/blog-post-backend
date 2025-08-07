@@ -1,87 +1,87 @@
-import { ArgsType, Field, InputType, Int, ObjectType } from '@nestjs/graphql';
-import { Comment } from 'src/modules/comments/models/comment.model';
-import { Post } from 'src/modules/posts/models/post.model';
+import { ArgsType, Field, InputType, Int, ObjectType } from '@nestjs/graphql'
+import { Comment } from 'src/modules/comments/models/comment.model'
+import { Post } from 'src/modules/posts/models/post.model'
 
 @ObjectType()
 export class User {
   @Field(() => Int)
-  id: number;
+  id: number
 
   @Field(() => String)
-  createdAt: string;
+  createdAt: string
 
   @Field(() => String)
-  updatedAt: string;
+  updatedAt: string
 
   @Field(() => String)
-  email: number;
+  email: number
 
   @Field({ nullable: true })
-  firstName?: string;
+  firstName?: string
 
   @Field({ nullable: true })
-  midName?: string;
+  midName?: string
 
   @Field({ nullable: true })
-  lastName?: string;
+  lastName?: string
 
   @Field(() => [Post])
-  posts: Post[];
+  posts: Post[]
 
   @Field(() => Int)
-  postCount: number;
+  postCount: number
 
   @Field(() => [Comment])
-  comments: Comment[];
+  comments: Comment[]
 
   @Field(() => Int)
-  commentCount: number;
+  commentCount: number
 }
 
 @ArgsType()
 export class UsersArgs {
   @Field(() => Int)
-  skip = 0;
+  skip = 0
 
   @Field(() => Int)
-  take = 10;
+  take = 10
 }
 
 @ArgsType()
 export class UserArgs {
   @Field(() => Int)
-  id: number;
+  id: number
 }
 
 @InputType()
 export class CreateUserInput {
   @Field()
-  email: string;
+  email: string
 
   @Field()
-  password: string;
+  password: string
 
   @Field()
-  firstName: string;
+  firstName: string
 
   @Field()
-  midName: string;
+  midName: string
 
   @Field()
-  lastName: string;
+  lastName: string
 }
 
 @InputType()
 export class UpdateUserInput {
   @Field(() => Int)
-  id: number;
+  id: number
 
   @Field({ nullable: true })
-  firstName?: string;
+  firstName?: string
 
   @Field({ nullable: true })
-  midName?: string;
+  midName?: string
 
   @Field({ nullable: true })
-  lastName?: string;
+  lastName?: string
 }

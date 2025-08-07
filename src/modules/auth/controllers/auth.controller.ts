@@ -1,9 +1,9 @@
-import { Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from '../guards/jwt-auth.guard';
-import { LocalAuthGuard } from '../guards/local-auth.guard';
-import { AuthService } from '../services/auth.service';
-import { PrismaService } from 'src/services/prisma.service';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { Controller, Get, Post, Request, UseGuards } from '@nestjs/common'
+import { JwtAuthGuard } from '../guards/jwt-auth.guard'
+import { LocalAuthGuard } from '../guards/local-auth.guard'
+import { AuthService } from '../services/auth.service'
+import { PrismaService } from 'src/services/prisma.service'
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger'
 
 @ApiTags('Auth')
 @Controller()
@@ -16,8 +16,8 @@ export class AuthController {
   // Auth request
   @UseGuards(LocalAuthGuard)
   @Post('login')
-  async login(@Request() req) {
-    return this.authService.login(req.user);
+  login(@Request() req) {
+    return this.authService.login(req.user)
   }
 
   @ApiBearerAuth()
@@ -33,6 +33,6 @@ export class AuthController {
         midName: true,
         lastName: true,
       },
-    });
+    })
   }
 }

@@ -1,16 +1,16 @@
-import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { Field, Int, ObjectType } from '@nestjs/graphql'
 
 @ObjectType()
 export class Tag {
   @Field(() => Int)
-  id: number;
+  id: number
 
   @Field(() => String)
-  createdAt: string;
+  createdAt: string
 
   @Field(() => String)
-  updatedAt: string;
+  updatedAt: string
 
   @Field(() => String)
-  title: string;
+  title: string
 }

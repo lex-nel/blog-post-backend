@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/services/prisma.service';
-import { JwtService } from '@nestjs/jwt';
-import { User } from '@prisma/client';
+import { Injectable } from '@nestjs/common'
+import { PrismaService } from 'src/services/prisma.service'
+import { JwtService } from '@nestjs/jwt'
+import { User } from '@prisma/client'
 
 @Injectable()
 export class AuthService {
@@ -13,22 +13,22 @@ export class AuthService {
   async validateUser(email: string, password: string): Promise<Partial<User>> {
     const user = await this.prismaService.user.findUnique({
       where: { email: email },
-    });
+    })
 
     if (user && user.password === password) {
-      const { password, ...result } = user;
+      const { password, ...result } = user
 
-      return result;
+      return result
     }
 
-    return null;
+    return null
   }
 
-  async login(user: any) {
-    const payload = { email: user.email, sub: user.id };
+  login(user: any) {
+    const payload = { email: user.email, sub: user.id }
 
     return {
       access_token: this.jwtService.sign(payload),
-    };
+    }
   }
 }

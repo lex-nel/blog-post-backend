@@ -5,12 +5,12 @@ import {
   Post,
   Request,
   UseGuards,
-} from '@nestjs/common';
-import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { PrismaService } from 'src/services/prisma.service';
-import { PostLikeDto } from '../dto/post-like.dto';
-import { CommentLikeDto } from '../dto/comment-like.dto';
-import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
+} from '@nestjs/common'
+import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger'
+import { PrismaService } from 'src/services/prisma.service'
+import { PostLikeDto } from '../dto/post-like.dto'
+import { CommentLikeDto } from '../dto/comment-like.dto'
+import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard'
 
 @ApiTags('Likes')
 @Controller('likes')
@@ -27,7 +27,7 @@ export class LikesController {
       include: {
         author: true,
       },
-    });
+    })
   }
 
   @UseGuards(JwtAuthGuard)
@@ -39,7 +39,7 @@ export class LikesController {
         postId: parseInt(id),
         authorId: req.user.userId,
       },
-    });
+    })
   }
 
   @Get('comment')
@@ -52,7 +52,7 @@ export class LikesController {
       include: {
         author: true,
       },
-    });
+    })
   }
 
   @UseGuards(JwtAuthGuard)
@@ -64,6 +64,6 @@ export class LikesController {
         commentId: parseInt(id),
         authorId: req.user.userId,
       },
-    });
+    })
   }
 }

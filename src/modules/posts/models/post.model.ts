@@ -5,103 +5,103 @@ import {
   InputType,
   Int,
   ObjectType,
-} from '@nestjs/graphql';
-import { User } from 'src/modules/users/models/user.model';
-import { Comment } from 'src/modules/comments/models/comment.model';
-import { Tag } from 'src/modules/tags/models/tag.model';
+} from '@nestjs/graphql'
+import { User } from 'src/modules/users/models/user.model'
+import { Comment } from 'src/modules/comments/models/comment.model'
+import { Tag } from 'src/modules/tags/models/tag.model'
 
 @ObjectType()
 export class Post {
   @Field(() => Int)
-  id: number;
+  id: number
 
   @Field(() => String)
-  createdAt: string;
+  createdAt: string
 
   @Field(() => String)
-  updatedAt: string;
+  updatedAt: string
 
   @Field(() => String, { nullable: true })
-  publishedAt: string;
+  publishedAt: string
 
   @Field(() => Boolean)
-  isPublished: boolean;
+  isPublished: boolean
 
   @Field(() => String)
-  image: string;
+  image: string
 
   @Field(() => String)
-  title: string;
+  title: string
 
   @Field(() => String)
-  longTitle: string;
+  longTitle: string
 
   @Field(() => String)
-  content: string;
+  content: string
 
   @Field(() => User)
-  author: User;
+  author: User
 
   @Field(() => Int)
-  authorId: number;
+  authorId: number
 
   @Field(() => [Comment])
-  comments: Comment[];
+  comments: Comment[]
 
   @Field(() => Int)
-  commentCount: number;
+  commentCount: number
 
   @Field(() => [Tag])
-  tags: Tag[];
+  tags: Tag[]
 }
 
 @ArgsType()
 export class PostsArgs {
   @Field(() => Int)
-  skip = 0;
+  skip = 0
 
   @Field(() => Int)
-  take = 10;
+  take = 10
 }
 
 @ArgsType()
 export class PostArgs {
   @Field(() => ID)
-  id: string;
+  id: string
 }
 
 @InputType()
 export class CreatePostInput {
   @Field()
-  image: string;
+  image: string
 
   @Field()
-  title: string;
+  title: string
 
   @Field()
-  longTitle: string;
+  longTitle: string
 
   @Field()
-  content: string;
+  content: string
 
   @Field(() => Int)
-  authorId: number;
+  authorId: number
 }
 
 @InputType()
 export class UpdatePostInput {
   @Field(() => Int)
-  id: number;
+  id: number
 
   @Field(() => Boolean)
-  isPublished: boolean;
+  isPublished: boolean
 
   @Field()
-  title: string;
+  title: string
 
   @Field()
-  longTitle: string;
+  longTitle: string
 
   @Field()
-  content: string;
+  content: string
 }

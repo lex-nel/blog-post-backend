@@ -1,52 +1,52 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { Tag } from '@prisma/client';
-import { UserDto } from 'src/modules/users/dto/user.dto';
-import { CountDto } from './count.dto';
+import { ApiProperty } from '@nestjs/swagger'
+import { Tag } from '@prisma/client'
+import { UserDto } from 'src/modules/users/dto/user.dto'
+import { CountDto } from './count.dto'
 
 export class PostDto {
   @ApiProperty()
-  id: number;
+  id: number
 
   @ApiProperty()
-  createdAt: string;
+  createdAt: string
 
   @ApiProperty()
-  updatedAt: string;
+  updatedAt: string
 
   @ApiProperty()
-  publishedAt: string;
+  publishedAt: string
 
   @ApiProperty()
-  isPublished: boolean;
+  isPublished: boolean
 
   @ApiProperty()
-  image: string;
+  image: string
 
   @ApiProperty()
-  title: string;
+  title: string
 
   @ApiProperty()
-  longTitle: string;
+  longTitle: string
 
   @ApiProperty()
-  content: string;
+  content: string
 
   @ApiProperty({
     type: () => UserDto,
   })
-  author: UserDto;
+  author: UserDto
 
   @ApiProperty()
-  authorId: number;
+  authorId: number
 
   @ApiProperty()
-  comments: Comment[];
+  comments: Comment[]
 
   @ApiProperty()
-  tags: Tag[];
+  tags: Tag[]
 
   @ApiProperty({
     type: () => CountDto,
   })
-  _count: CountDto;
+  _count: CountDto
 }

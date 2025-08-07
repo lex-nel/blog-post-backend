@@ -1,42 +1,42 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { CommentDto } from 'src/modules/comments/dto/comment.dto';
-import { PostDto } from 'src/modules/posts/dto/post.dto';
+import { ApiProperty } from '@nestjs/swagger'
+import { CommentDto } from 'src/modules/comments/dto/comment.dto'
+import { PostDto } from 'src/modules/posts/dto/post.dto'
 
 export class UserDto {
   @ApiProperty()
-  id: number;
+  id: number
 
   @ApiProperty()
-  createdAt: string;
+  createdAt: string
 
   @ApiProperty()
-  updatedAt: string;
+  updatedAt: string
 
   @ApiProperty()
-  email: number;
+  email: number
 
   @ApiProperty()
-  firstName?: string;
+  firstName?: string
 
   @ApiProperty()
-  midName?: string;
+  midName?: string
 
   @ApiProperty()
-  lastName?: string;
+  lastName?: string
 
   @ApiProperty({
     type: () => [PostDto],
   })
-  posts: PostDto[];
+  posts: PostDto[]
 
   @ApiProperty()
-  postCount: number;
+  postCount: number
 
   @ApiProperty({
     type: () => [CommentDto],
   })
-  comments: CommentDto[];
+  comments: CommentDto[]
 
   @ApiProperty()
-  commentCount: number;
+  commentCount: number
 }

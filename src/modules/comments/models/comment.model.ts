@@ -5,69 +5,69 @@ import {
   InputType,
   Int,
   ObjectType,
-} from '@nestjs/graphql';
-import { Post } from 'src/modules/posts/models/post.model';
-import { User } from 'src/modules/users/models/user.model';
+} from '@nestjs/graphql'
+import { Post } from 'src/modules/posts/models/post.model'
+import { User } from 'src/modules/users/models/user.model'
 
 @ObjectType()
 export class Comment {
   @Field(() => Int)
-  id: number;
+  id: number
 
   @Field(() => String)
-  createdAt: string;
+  createdAt: string
 
   @Field(() => String)
-  updatedAt: string;
+  updatedAt: string
 
   @Field(() => String)
-  content: string;
+  content: string
 
   @Field(() => User)
-  author: User;
+  author: User
 
   @Field(() => Int)
-  authorId: number;
+  authorId: number
 
   @Field(() => Post)
-  post: Post;
+  post: Post
 
   @Field(() => Int)
-  postId: number;
+  postId: number
 }
 
 @ArgsType()
 export class CommentsArgs {
   @Field(() => Int)
-  skip = 0;
+  skip = 0
 
   @Field(() => Int)
-  take = 10;
+  take = 10
 }
 
 @ArgsType()
 export class CommentArgs {
   @Field(() => ID)
-  id: string;
+  id: string
 }
 
 @InputType()
 export class CreateCommentInput {
   @Field()
-  content: string;
+  content: string
 
   @Field(() => Int)
-  authorId: number;
+  authorId: number
 
   @Field(() => Int)
-  postId: number;
+  postId: number
 }
 
 @InputType()
 export class UpdateCommentInput {
   @Field(() => Int)
-  id: number;
+  id: number
 
   @Field()
-  content: string;
+  content: string
 }

@@ -1,23 +1,16 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Post,
-  Request,
-  UseGuards,
-} from '@nestjs/common';
+import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common'
 import {
   ApiBearerAuth,
   ApiBody,
   ApiCreatedResponse,
   ApiResponse,
   ApiTags,
-} from '@nestjs/swagger';
-import { PrismaService } from 'src/services/prisma.service';
-import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
-import { PostDto } from '../../posts/dto/post.dto';
-import { CreateCommentDto } from '../dto/create-comment.dto';
-import { CommentDto } from '../dto/comment.dto';
+} from '@nestjs/swagger'
+import { PrismaService } from 'src/services/prisma.service'
+import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard'
+import { PostDto } from '../../posts/dto/post.dto'
+import { CreateCommentDto } from '../dto/create-comment.dto'
+import { CommentDto } from '../dto/comment.dto'
 
 @ApiTags('Comments')
 @Controller('comments')
@@ -35,7 +28,7 @@ export class CommentsController {
         _count: { select: { likes: true } },
         author: true,
       },
-    });
+    })
   }
 
   @UseGuards(JwtAuthGuard)
@@ -55,6 +48,6 @@ export class CommentsController {
         ...createCommentDto,
         authorId: req.user.userId,
       },
-    });
+    })
   }
 }

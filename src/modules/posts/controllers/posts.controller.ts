@@ -6,18 +6,18 @@ import {
   Post,
   Request,
   UseGuards,
-} from '@nestjs/common';
+} from '@nestjs/common'
 import {
   ApiBearerAuth,
   ApiBody,
   ApiCreatedResponse,
   ApiResponse,
   ApiTags,
-} from '@nestjs/swagger';
-import { PrismaService } from 'src/services/prisma.service';
-import { CreatePostDto } from '../dto/create-post.dto';
-import { PostDto } from '../dto/post.dto';
-import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
+} from '@nestjs/swagger'
+import { PrismaService } from 'src/services/prisma.service'
+import { CreatePostDto } from '../dto/create-post.dto'
+import { PostDto } from '../dto/post.dto'
+import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard'
 
 @ApiTags('Posts')
 @Controller('posts')
@@ -36,7 +36,7 @@ export class PostsController {
         author: true,
         tags: true,
       },
-    });
+    })
   }
 
   @Get(':id')
@@ -47,7 +47,7 @@ export class PostsController {
   async post(@Param('id') id: string) {
     return this.prisma.post.findUnique({
       where: { id: parseInt(id, 10) },
-    });
+    })
   }
 
   @UseGuards(JwtAuthGuard)
@@ -64,6 +64,6 @@ export class PostsController {
         ...createPostDto,
         authorId: req.user.userId,
       },
-    });
+    })
   }
 }
